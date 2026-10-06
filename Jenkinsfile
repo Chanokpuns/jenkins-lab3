@@ -29,7 +29,9 @@ pipeline {
           }
         }
         sshagent(credentials: ['devtools-ssh']) {
-          sh '$SSH_DEVTOOLS "hostname && whoami && docker --version && git --version"'
+          sh '''
+            ssh-add -L
+            '''
         }
       }
     }
